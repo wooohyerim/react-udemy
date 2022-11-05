@@ -1,10 +1,11 @@
 import React from "react";
 
 const Button = ({ text, type, onClick }) => {
+  const btnType = ["positive", "negative"].includes(type) ? type : "default";
+
   return (
     <button
-      className="cursor-pointer border-none rounded-xl py-2.5 px-5 text-lg whitespace-nowrap bg-slate-200 
-      "
+      className={["Button", `Button_${btnType}`].join(" ")}
       onClick={onClick}
     >
       {text}

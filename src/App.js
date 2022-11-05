@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useReducer, useRef } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Diary from "./pages/Diary";
@@ -6,26 +6,84 @@ import Edit from "./pages/Edit";
 import Home from "./pages/Home";
 import New from "./pages/New";
 
-import Button from "./components/Button"; //component
+const reducer = (state, action) => {
+  let newState = [];
+  switch (action.type) {
+    case "INIT": {
+      return action.data;
+    }
+    case "CREATE": {
+      newState = [action.data, ...state];
+      break;
+    }
+    case "REMOVE": {
+      newState = state.filter((it) => it.id !== action.targetId);
+      break;
+    }
+    case "EDIT": {
+      newState = state.map((it) =>
+        it.id === action.data.id ? { ...action.data } : it
+      );
+      break;
+    }
+    default:
+      return state;
+  }
+  return newState;
+};
+
+export const DiaryDiapatchContext = React.createContext();
+export const DiaryStateContext = React.createContext();
 
 const App = () => {
+  const [data, dispatch] = useReducer(reducer, []);
+
+  const dataId = useRef(0);
+
+  const onCreate = (date, content, emotion) => {
+    dispatch({
+      type: "CREATE",
+      data: {
+        id: dataId.current,
+        date: new Date(date).getTime(),
+        content,
+        emotion,
+      },
+    });
+    dataId.current += 1;
+  };
+
+  const onRemove = (targetId) => {
+    dispatch({ type: "REMOVE", targetId });
+  };
+
+  const onEdit = (targetId, date, content, emotion) => {
+    dispatch({
+      type: "EDIT",
+      data: {
+        id: targetId,
+        date: new Date(date).getTime(),
+        content,
+        emotion,
+      },
+    });
+  };
+
   return (
-    <BrowserRouter>
-      <div className="App">
-        <h1>일기장</h1>
-        <Button
-          text={"버튼"}
-          onClick={() => alert("버튼 클릭")}
-          type={"positive"}
-        />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/new" element={<New />} />
-          <Route path="/edit" element={<Edit />} />
-          <Route path="/diary/:id" element={<Diary />} />
-        </Routes>
-      </div>
-    </BrowserRouter>
+    <DiaryStateContext.Provider value={data}>
+      <DiaryDiapatchContext.Provider value={{ onCreate, onRemove, onEdit }}>
+        <BrowserRouter>
+          <div className="App">
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/new" element={<New />} />
+              <Route path="/edit" element={<Edit />} />
+              <Route path="/diary/:id" element={<Diary />} />
+            </Routes>
+          </div>
+        </BrowserRouter>
+      </DiaryDiapatchContext.Provider>
+    </DiaryStateContext.Provider>
   );
 };
 

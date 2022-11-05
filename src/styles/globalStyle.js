@@ -44,6 +44,66 @@ body {
 .App{
   min-height: 100vh;
   padding: 0 20px;
-}`;
+}
+
+
+
+.Button {
+
+  padding: 10px 20px;
+  border:none;
+  border-radius: 5px;
+  font-size: 18px;
+  font-family:'Poor Story', cursive;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.Button_default {
+background-color: #ececec;
+color:#000;
+}
+
+.Button_positive {
+  background-color: lightgreen;
+  color: #fff;
+}
+
+.Button_negative {
+  background-color: #fd565f;
+  color:#fff;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #e2e2e2;
+  padding: 20px 0;
+}
+
+header > div {
+  display: flex;
+}
+
+header .head_text {
+  justify-content: center;
+  width: 50%;
+  font-size: 25px;
+}
+
+header .head_btn_left {
+  justify-content: flex-start;
+  width: 25%;
+}
+
+header .head_btn_right {
+  justify-content: flex-end;
+  width: 25%;
+}
+
+header button {
+  font-family: 'Dosis', sans-serif;
+}
+`;
 
 export default GlobalStyle;
