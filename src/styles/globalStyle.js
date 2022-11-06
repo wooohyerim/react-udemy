@@ -46,8 +46,7 @@ body {
   padding: 0 20px;
 }
 
-
-
+//Button
 .Button {
 
   padding: 10px 20px;
@@ -74,6 +73,7 @@ color:#000;
   color:#fff;
 }
 
+//Header
 header {
   display: flex;
   align-items: center;
