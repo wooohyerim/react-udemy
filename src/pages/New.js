@@ -1,9 +1,10 @@
 import React from "react";
+import DiaryEditor from "../components/DiaryEditor";
 
 const New = () => {
   return (
     <div>
-      <p>new page</p>
+      <DiaryEditor />
     </div>
   );
 };

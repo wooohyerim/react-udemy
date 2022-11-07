@@ -115,7 +115,7 @@ export const FilterMenu = styled.select`
   border: none;
   border-radius: 5px;
   background-color: #ececec;
-  font-family: "Poor Story", cursive;
+  font-family: "Dosis", sans-serif;
   font-size: 18px;
   cursor: pointer;
 `;
