@@ -135,6 +135,28 @@ header button {
   background-color: #fd565f;
   color:#fff;
 }
+
+//Diary
+
+.diary_img_wrapper_1 {
+    background-color: #64c964;
+  }
+
+  .diary_img_wrapper_2 {
+    background-color: #9dd772;
+  }
+
+  .diary_img_wrapper_3 {
+    background-color: #fdcd17;
+  }
+
+  .diary_img_wrapper_4 {
+    background-color: #fd8446;
+  }
+
+  .diary_img_wrapper_5 {
+    background-color: #fd565f;
+  }
 `;
 
 export default GlobalStyle;
