@@ -4,7 +4,7 @@ import styled from "styled-components";
 import Button from "./Button";
 import DiaryItem from "./DiaryItem";
 
-const ControlMenu = ({ value, onChange, optionList }) => {
+const ControlMenu = React.memo(({ value, onChange, optionList }) => {
   return (
     <FilterMenu value={value} onChange={(e) => onChange(e.target.value)}>
       {optionList.map((it, idx) => (
@@ -14,7 +14,7 @@ const ControlMenu = ({ value, onChange, optionList }) => {
       ))}
     </FilterMenu>
   );
-};
+});
 
 const sortOptionList = [
   { value: "latest", name: "최신순" },

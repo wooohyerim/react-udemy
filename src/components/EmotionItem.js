@@ -22,7 +22,7 @@ const EmotionItem = ({
   );
 };
 
-export default EmotionItem;
+export default React.memo(EmotionItem);
 
 export const EmotionBox = styled.div`
   display: flex;

@@ -1,7 +1,9 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import styled from "styled-components";
+
 import Button from "./Button";
+
+import styled from "styled-components";
 
 const DiaryItem = ({ id, emotion, content, date }) => {
   const env = process.env;
@@ -44,7 +46,7 @@ const DiaryItem = ({ id, emotion, content, date }) => {
   );
 };
 
-export default DiaryItem;
+export default React.memo(DiaryItem);
 
 export const ItemBox = styled.div`
   display: flex;
